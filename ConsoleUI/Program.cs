@@ -30,13 +30,28 @@ namespace ConsoleUI
             Console.WriteLine("Pow Complex: {0}", ComplexCalculator.Pow(number,3));
             Console.WriteLine("Pow : {0}", Calculator.Pow(number,3));*/
 
-            Vector v1 = new Vector(new ComplexNumber(3, -1), new ComplexNumber(2, 1), new ComplexNumber(5, 0), new ComplexNumber(0, 0));
-            Vector v2 = new Vector(new ComplexNumber(0, -1), new ComplexNumber(-1, 0), new ComplexNumber(3, -1), new ComplexNumber(-1, -1));
+            /*Vector v1 = new Vector(new ComplexNumber(-2, 5), new ComplexNumber(8, -6), new ComplexNumber(4, 5));
+            Vector v2 = new Vector(new ComplexNumber(5, 7), new ComplexNumber(3, 6), new ComplexNumber(2, 2));
             Console.WriteLine("v1={0}",v1);
             Console.WriteLine("v2={0}",v2);
             Console.WriteLine("Iloczyn skalarny: {0}", Vector.ScalarProduct(v1, v2));
             Console.WriteLine("Suma: {0}", Vector.Add(v1, v2));
-            Console.WriteLine("Norma: {0}", Vector.Norm(v1));
+            Console.WriteLine("Norma: {0}", Vector.Norm(v2));*/
+            Qubit q1= new Qubit(0,1);
+            Console.WriteLine("q1={0}", q1);
+            Console.WriteLine("Phase alpha: {0}", q1.Alpha.Phase);
+            Console.WriteLine("Phase beta: {0}", q1.Beta.Phase);
+            Console.WriteLine("X gate {0}", Qubit.PauliX(q1));
+            Console.WriteLine("X alpha phase {0}", Qubit.PauliX(q1).Alpha.Phase);
+            Console.WriteLine("X beta phase {0}", Qubit.PauliX(q1).Beta.Phase);
+
+            Console.WriteLine("S gate {0}", Qubit.S(q1));
+            Console.WriteLine("S alpha phase {0}", Qubit.S(q1).Alpha.Phase);
+            Console.WriteLine("S beta phase {0}", Qubit.S(q1).Beta.Phase);
+
+            Console.WriteLine("T gate {0}", Qubit.T(q1));
+            Console.WriteLine("T alpha phase {0}", Qubit.T(q1).Alpha.Phase);
+            Console.WriteLine("T beta phase {0}", Qubit.T(q1).Beta.Phase);
 
             Console.ReadLine();
         }

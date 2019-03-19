@@ -37,5 +37,20 @@ namespace MyComplex
             if (Imaginary < 0) return Real + " - " + Math.Abs(Imaginary)+"i";
             return Real + " + " + Imaginary + "i";
         }
+
+        public static ComplexNumber Random()
+        {
+            System.Random rand = new Random();
+            double a = rand.NextDouble();
+            return ComplexNumber.FromPolarCoordinates(a, rand.Next(1,360)*Math.PI/180);
+        }
+
+        public static ComplexNumber operator +(ComplexNumber a, ComplexNumber b) => ComplexCalculator.Add(a, b);
+        public static ComplexNumber operator -(ComplexNumber a, ComplexNumber b) => ComplexCalculator.Subtract(a, b);
+        public static ComplexNumber operator *(ComplexNumber a, ComplexNumber b) => ComplexCalculator.Multiply(a, b);
+        public static ComplexNumber operator *(ComplexNumber a, double b) => ComplexCalculator.Multiply(a, new ComplexNumber(b, 0));
+        public static ComplexNumber operator /(ComplexNumber a, ComplexNumber b) => ComplexCalculator.Divide(a, b);
+        public static ComplexNumber operator /(ComplexNumber a, double b) => ComplexCalculator.Divide(a, new ComplexNumber(b, 0));
+        public static implicit operator ComplexNumber(double d) => new ComplexNumber(d, 0);
     }
 }
