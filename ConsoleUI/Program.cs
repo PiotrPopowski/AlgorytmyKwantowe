@@ -37,7 +37,7 @@ namespace ConsoleUI
             Console.WriteLine("Iloczyn skalarny: {0}", Vector.ScalarProduct(v1, v2));
             Console.WriteLine("Suma: {0}", Vector.Add(v1, v2));
             Console.WriteLine("Norma: {0}", Vector.Norm(v2));*/
-            Qubit q1= new Qubit(0,1);
+            Qubit q1= new Qubit();
             Console.WriteLine("q1={0}", q1);
             Console.WriteLine("Phase alpha: {0}", q1.Alpha.Phase);
             Console.WriteLine("Phase beta: {0}", q1.Beta.Phase);
@@ -52,7 +52,20 @@ namespace ConsoleUI
             Console.WriteLine("T gate {0}", Qubit.T(q1));
             Console.WriteLine("T alpha phase {0}", Qubit.T(q1).Alpha.Phase);
             Console.WriteLine("T beta phase {0}", Qubit.T(q1).Beta.Phase);
+            
+            ComplexNumber e=Calculator.Exp(new ComplexNumber(0, Math.PI / 4));
+            Vector w = new Vector(1, e + 1);
+            Console.WriteLine("w={0}", Vector.ScalarProduct(w,w));
 
+
+            Console.WriteLine("Magnitude alpha: {0}", Math.Pow(q1.Alpha.Magnitude,2));
+            Console.WriteLine("Magnitude beta: {0}", Math.Pow(q1.Beta.Magnitude,2));
+            q1 = new Qubit(0, 1);
+            var w1 = new Vector(4, 2, -1, 4, new ComplexNumber(1, -3), 4, 0, 1, 2, 3, 4);
+            Console.WriteLine(w1);
+            Console.WriteLine(q1);
+            Console.WriteLine("Z: {0}", Qubit.S(q1));
+            Console.WriteLine("Measure: {0}", Qubit.Measure(q1));
             Console.ReadLine();
         }
     }

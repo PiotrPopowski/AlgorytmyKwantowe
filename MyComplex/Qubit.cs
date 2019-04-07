@@ -54,6 +54,26 @@ namespace MyComplex
         public static Qubit Hadamard(Qubit qubit) 
             => new Qubit((qubit.Alpha + qubit.Beta) / Math.Sqrt(2), (qubit.Alpha - qubit.Beta) / Math.Sqrt(2));
 
+        public static Qubit Measure(Qubit qubit)
+        {
+            ComplexNumber alpha = qubit.Alpha / qubit.Alpha.Magnitude;
+            ComplexNumber beta = qubit.Beta / qubit.Beta.Magnitude;
+            Random rand = new Random();
+            double pA = Math.Pow(qubit.Alpha.Magnitude,2);
+            double pB = Math.Pow(qubit.Beta.Magnitude,2);
+            List<ComplexNumber> result = new List<ComplexNumber>();
+            for (int i = 0; i < Math.Floor(pA * 100); i++)
+                result.Add(alpha);
+            for (int i = 0; i < Math.Floor(pB * 100); i++)
+                result.Add(beta);
+            int n = rand.Next(0, result.Count);
+            var c = result[n];
+            if (c == alpha)
+                return new Qubit(alpha, 0);
+            else
+                return new Qubit(0, beta);
+        }
+
         public override string ToString()
         {
             return vector.ToString();
